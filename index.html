@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Registration </title>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align: center;padding-top: 15px;padding-bottom: 15px;">Registration Form</h1>
+
+        <form onsubmit="return myFun()" id="myForm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inpufname"><img class="image" src="Image/6218121.png" />First Name:</label>
+                    <input type="text" class="form-control" id="inputfname" placeholder="First Name" autocomplete="off"
+                        onkeyup="firstname()">
+                    <p id="sms1" class="text-warning"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputlname"><img class="image" src="Image/6218121.png" />Last Name:</label>
+                    <input type="text" class="form-control" id="inputlname" placeholder="Last Name" autocomplete="off"
+                        onkeyup="lastname()">
+                    <p id="sms2" class="text-warning"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputemail"><img class="image" src="Image/email.png" alt="image"> Email address:</label>
+                <input type="text" class="form-control" id="inputemail" placeholder="name@example.com"
+                    autocomplete="off" onkeyup="emailFunction()">
+                <p id="sms3" class="text-warning"></p>
+            </div>
+            <div class="form-group">
+                <label for="inputpassword"> <img class="image" src="Image/pass.png" alt="image" /> Password:</label>
+                <input type="password" class="form-control" id="pass1" placeholder="Password" onkeyup="password()">
+                <p id="sms4" class="text-warning"></p>
+            </div>
+            <div class="form-group">
+                <label for="inputconfirmpassword"><img class="image" src="Image/pass.png" alt="image" />Confirm
+                    Password:</label>
+                <input type="password" class="form-control" id="pass2" placeholder="Confirm Password"
+                    onkeyup="conpassword()">
+                <p id="sms5" class="text-warning"></p>
+            </div>
+            <div class="form-group">
+                <div class="row d-flex">
+                    <div class="col-md-5 ">
+                        <label for="gender"><img class="image" src="Image/gender.jpeg" alt="image" />Gender:</label>
+                        <div class="form-check form-check-inline">
+                            <span id="gendererror"></span>
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="male"
+                                value="option1" onclick="validateGender">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="female"
+                                value="option2" onclick="validateGender">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="other"
+                                value="option3" onclick="validateGender">
+                            <label class="form-check-label" for="inlineRadio3">Other</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="languageknown"><img class="image" src="Image/language.jpeg" alt="image" />Language
+                            Known:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="hindi" value="option1"
+                                onclick="validateLanguageKnown">
+                            <label class="form-check-label" for="inlineCheckbox1">Hindi</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="english" value="option2"
+                                onclick="validateLanguageKnown">
+                            <label class="form-check-label" for="inlineCheckbox2">English</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="other" value="option3"
+                                onclick="validateLanguageKnown">
+                            <label class="form-check-label" for="inlineCheckbox3">Other</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputdob"><img class="image" src="Image/download.jpeg" alt="image">Date Of Birth:</label>
+                <input type="date" class="form-control" id="inputdob" placeholder="name@example.com" onclick="dbirth()"
+                    required>
+                <p id="sms6" class="text-warning"></p>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="country-select"><img class="image" src="Image/country.png" alt="image">Select
+                        Country:</label>
+                    <select id="country-select" onclick="validatePhone()" class="form-control">
+                        <option value="usa">Please select country</option>
+                        <option value="vietnam">Vietnam</option>
+                        <option value="india">India</option>
+                        <option value="china">China</option>
+                        <option value="uae">UAE</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputcode"><img class="image" src="Image/conicon.jpeg" alt="image">Country Code</label>
+                    <input type="text" class="form-control" id="inputcode" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputphone"><img class="image" src="Image/phone.png" alt="image">Enter Phone
+                        Number:</label>
+                    <input type="tel" class="form-control" id="inputphone" minlength="10" maxlength="10">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputqualification"><img class="image" src="Image/quali.png"
+                        alt="image">Qualifications:</label>
+                <select class="form-control" id="inputqualification">
+                    <option>Graduation</option>
+                    <option>Higher Secondary</option>
+                    <option>Matriculation Pass</option>
+                    <option>Diploma</option>
+                </select>
+            </div>
+             <div class="form-group">
+                <div class="mt-2">
+                <label for="inputcode">Upload Image</label>
+                <div class="custom-file ">
+                    <input type="file" class="custom-file-input" id="file" onfocus="imageval()">
+                    <label class="custom-file-label" for="validatedCustomFile">Choose image...</label>
+                    <div class="invalid-feedback"> Invalid image </div>
+                </div>
+            </div> 
+            <div class="form-group mb-5">
+                <label class="" for="file">&nbsp;<img class="image" src="Image/file.png" alt="image">Select an image
+                    (max size 2MB):</label>
+                <input type="file" id="file" accept=".jpeg,.jpg,.png" class="form-control form-control-lg"
+                    onfocus="imageval()" required>
+            </div>
+             <div class="mt-2">
+                    <label for="inputcode">Upload File</label>
+                    <div class="custom-file ">
+                        <input type="file" class="custom-file-input" id="validatedfile" >
+                        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                        <div class="invalid-feedback"> Invalid file </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-5">
+                <label for="">&nbsp;<img class="image" src="Image/file.png" alt="image"> Select a document (max size
+                    5MB):</label>
+                <input class="form-control form-control-lg" type="file" id="doc" name="document"
+                    accept=".pdf, .doc, .docx" maxlength="5000000" onkeyup="docval()" required>
+                <span id="errd"></span>
+            </div>
+            <div class="form-group">
+                <label for="address"><img class="image" src="Image/address.png" alt="image">Address:</label>
+                <textarea class="form-control" id="address" rows="3" onkeyup="addr()"></textarea>
+                <p id="sms7" class="text-warning"></p>
+            </div>
+
+            <div class="form-group mt-2">
+                <div class="captcha">
+                    <img class="image" src="Image/captcha.png" alt="image">
+                    <input type="text" id="captcha-input" placeholder="Enter the code above"
+                        onreset="refreshCaptcha()" />
+                    <img src="" alt="CAPTCHA code" id="captcha-img" />
+                    <button type="button" onclick="refreshCaptcha()">Refresh</button>
+                </div>
+                <div id="captcha-feedback"></div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <button type="submit" style="width: 150px;height: auto;"
+                        class="btn btn-info btn-lg mt-2 mb-2">Submit</button>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" style="width: 150px;height:auto;"
+                        class="btn btn-info btn-lg mt-2 mb-2">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+<script>
+
+    window.onload = function () {
+        refreshCaptcha();
+    }
+
+    const firstName = document.getElementById("inputfname");
+    const lastName = document.getElementById("inputlname");
+    firstName.addEventListener("keydown", function (event) {
+        if (firstName.selectionStart === 0 && event.keyCode === 32) {
+            event.preventDefault();
+        }
+    });
+    lastName.addEventListener("keydown", function (event) {
+        if (lastName.selectionStart === 0 && event.keyCode === 32) {
+            event.preventDefault();
+        }
+    });
+
+    inputemail.addEventListener('keydown', function (e) {
+        //     // Check if the first character is a whitespace and prevent it
+        if (inputemail.selectionStart === 0 && e.key === ' ') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    pass1.addEventListener('keydown', function (e) {
+        //     // Check if the first character is a whitespace and prevent it
+        if (pass1.selectionStart === 0 && e.key === ' ') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    pass2.addEventListener('keydown', function (e) {
+        //     // Check if the first character is a whitespace and prevent it
+        if (pass2.selectionStart === 0 && e.key === ' ') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    inputdob.addEventListener('keydown', function (e) {
+        //     // Check if the first character is a whitespace and prevent it
+        if (inputdob.selectionStart === 0 && e.key === ' ') {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+     //   address1.addEventListener('keydown', function(e) {
+     //Check if the first character is a whitespace and prevent it
+    //     if (address1.selectionStart === 0 && e.key === ' ') {
+    //       e.preventDefault();
+    //       return false;
+    //      }
+    //    });                  
+
+
+    const addressField1 = document.querySelector('#address');
+    function addWhiteSpace(element) {
+        const address = element.value;
+        let formattedAddress = '';
+        let count = 0;
+
+        for (let i = 0; i < address.length; i++) {
+            if (count > 0 && count % 16 === 0) {
+                if (address[i] !== ' ') {
+                    formattedAddress += ' ';
+                }
+            }
+            formattedAddress += address[i];
+            if (address[i] !== ' ') {
+                count++;
+            } else {
+                count = 0;
+            }
+        }
+
+        element.value = formattedAddress;
+    }
+    addressField1.addEventListener('input', function () {
+        addWhiteSpace(addressField1);
+    });
+
+    const form = document.getElementById("validateLanguageKnown");
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const isValid = validateLanguageKnown();
+
+        if (isValid) {
+            form.submit();
+        }
+    });
+
+
+
+</script>
+
+</html>
